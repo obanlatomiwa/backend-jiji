@@ -12,5 +12,5 @@ class Product(models.Model):
     price = models.IntegerField()
     description = models.TextField(max_length = 300)
     image = models.ImageField()
-    location = models.CharField(max_length= 120)
+    location = models.CharField(max_length= 120, null=True)
     
