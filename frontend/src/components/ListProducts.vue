@@ -20,7 +20,7 @@
         </div>
 
         <div class="col-md-6">
-          <ProductDetails v-bind:productdetailitem="productDetailItem"/>
+          <ProductDetails v-bind:productdetailitem="productDetailItem" v-on:deleted="updateProduct"/>
         </div>
       </div>
   </div>
@@ -40,7 +40,7 @@ export default {
     CreateProduct
   },
   data() {
-    return {
+    return { 
       products: [],
       productDetailItem: Object,
       createNew: "",
@@ -59,6 +59,13 @@ export default {
     },
     createdNew(){
       this.createNew = !this.createNew;
+    },
+    updateProduct(){
+      this.setTimeout(() => {
+        axios.get('http://127.0.0.1:8000/api/products/')
+        .then(res => (this.products = res.data))
+        .catch(err => console.log(err))
+      }, 500)
     }
   },
   created(){
