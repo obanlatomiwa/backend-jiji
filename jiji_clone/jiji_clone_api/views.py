@@ -13,7 +13,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
-    authentication_classes = (TokenAuthentication)
+    authentication_classes = (TokenAuthentication,)
 
     # action 
     @action(methods=['POST'], detail=True)
@@ -40,10 +40,12 @@ class PostPermission(BasePermission):
         if request.method == 'POST':
             return True
         return False
+
 class BuyerViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = BuyerSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
+    authentication_classes = (PostPermission)
 
     # action 
     def delete(self, *args, **kwargs):

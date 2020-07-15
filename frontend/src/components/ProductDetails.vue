@@ -1,12 +1,26 @@
 <template>
   <div class="">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-lg-10">
+            <b-card
+              title= ''
+              img-src="https://picsum.photos/600/300/?image=25"
+              img-alt="Image"
+              img-top
+              tag="article"
+              style="max-width: 100rem;"
+              class="md-10"
+            >
+              <b-card-text>
+                <p > <strong> {{productdetailitem.name}} </strong></p>
+                <p>Description: {{productdetailitem.description}}</p>
+                <p>Price: {{productdetailitem.price}} NGN</p>
+                <p>Location: {{productdetailitem.location}}</p>
+              </b-card-text>
+              <button class="btn-sm btn-danger mt-2 mb-3" v-on:click="productDelete(productdetailitem)" @click="$emit('deleted', productdetailitem)">Delete Product</button>
+            </b-card>
             <p>Name: {{productdetailitem.name}}</p>
-            <p>Description: {{productdetailitem.description}}</p>
             <p>Image: {{productdetailitem.image}}</p>
-            <p>Price: {{productdetailitem.price}}</p>
-            <p>Location: {{productdetailitem.location}}</p>
         </div>
       </div>
       <button class="btn-sm btn-danger mt-2 mb-3" v-on:click="productDelete(productdetailitem)" @click="$emit('deleted', productdetailitem)">Delete Product</button>
@@ -53,5 +67,16 @@ export default {
 </script>
 
 <style scoped>
+  .row {
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300&display=swap');
+    font-size: 26px;
+    font-family: 'Lato', sans-serif;
+    align-items: center;
+    display: flex;
+    padding: 1.5rem 3rem;
+    transition: all .3s;
+    text-decoration: none;
 
+
+  }
 </style>

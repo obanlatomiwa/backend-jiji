@@ -1,25 +1,24 @@
 <template>
-  <div class="">
+  <div class="container-fluid">
     <div class="col-md-12 mb-5" v-if="createNew"> 
       <CreateProduct v-on:createdProduct="updateProduct"/>
     </div> 
     <div class="row">
-        <div class="col-md-5 text-center product-view">
-            <h4>Welcome to Jiji</h4>
-            <form @submit="createdNew()">
+        <div class="col-md-3 text-center product-view card">
+            <form @submit="createdNew()" class ="">
               <input class="btn-sm btn-primary mb-3 btn-center" id="createdNew" type="submit" value="Add Product"> 
-            </form>
-            <br>
-            <p v-bind:key="product.id" v-for= "product in products">
-              {{product.description}}
-              <button class="btn sm btn-primary mt-2 mb-3" v-on:click="productDetail(product)">
-                products list
-              </button>
-              <br> 
-            </p>
+            </form> 
+            <h5>Products</h5>
+            <ul class ="product-view">
+              <div v-bind:key="product.id" v-for= "product in products">
+              <button class="btn sm btn-light mt-2 mb-3" v-on:click="productDetail(product)">
+                {{product.description}}
+              </button>               
+            </div>
+            </ul>
         </div> 
 
-        <div class="col-md-6">
+        <div class="col-md-9">
           <ProductDetails v-bind:productdetailitem="productDetailItem" v-on:deleted="updateProduct"/>
         </div>
       </div>
@@ -80,6 +79,13 @@ export default {
     @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300&display=swap');
     font-size: 26px;
     font-family: 'Lato', sans-serif;
+    align-items: center;
+    display: flex;
+    padding: 1.5rem 3rem;
+    transition: all .3s;
+    text-decoration: none;
+
 
   }
 </style>
+

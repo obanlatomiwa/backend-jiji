@@ -1,41 +1,42 @@
 <template>
-  <div class="">
-      <h1>Registration</h1>
+  <div class="container">
       <form id="form-product" @submit:prevent="createUser">
-          <!-- <p>
+        <div class="card">
+          <h1>Registration</h1>
+          <div class="form-group">
             <label for="firstname">First Name</label>
-            <input class="ml-2" type="text" name="firstname" id="firstname" v-model="firstname">
-          </p>
+            <input class="ml-4" type="text" name="firstname" id="firstname" v-model="firstname">
+          </div>
 
-          <p>
+          <div class="form-group">
             <label for="lastname">Last Name</label>
-            <input class="ml-2" type="text" name="lastname" id="lastname" v-model="lastname">
-          </p>
+            <input class="ml-4" type="text" name="lastname" id="lastname" v-model="lastname">
+          </div>
 
-          <p>
+          <div class="form-group">
             <label for="email">Email</label>
-            <input class="ml-2" type="email" name="email" id="email" v-model="email">
-          </p>
+            <input class="ml-4" type="email" name="email" id="email" aria-describedby="emailHelp" v-model="email">
+          </div>
 
-          <p>
+          <div class="form-group">
             <label for="residence">State of Residence</label>
-            <input class="ml-2" type="text" name="residence" id="residence" v-model="residence">
-          </p> -->
+            <input class="ml-4" type="text" name="residence" id="residence" v-model="residence">
+          </div>
 
-          <p>
+          <div class="form-group">
             <label for="username">Username</label>
-            <input class="ml-2" type="text" name="username" id="username" v-model="username">
-          </p>
+            <input class="ml-4" type="text" name="username" id="username" v-model="username">
+          </div>
 
-          <p>
+          <div class="form-group">
             <label for="password">Password</label>
-            <input class="ml-2" type="password" name="password" id="password" v-model="password">
-          </p>
+            <input class="ml-4" type="password" name="password" id="password" v-model="password">
+          </div>
 
-          <p>
-              <input type="submit" value="Submit" >
-          </p>
-
+          <div class="form-group">
+              <input type="submit"  class="btn btn-primary" value="Submit" >
+          </div>
+        </div>
       </form>
   </div>
 </template>
@@ -51,10 +52,10 @@ export default {
   },
   data() {
       return {
-        // firstname: null,
-        // lastname: null,
-        // email: null,
-        // residence: null,
+        firstname: null,
+        lastname: null,
+        email: null,
+        residence: null,
         username: null,
         password: null, 
       }
@@ -63,10 +64,10 @@ export default {
       createUser(){
           console.log(this.username)
           axios.post('http://127.0.0.1:8000/api/users/', {
-            //   firstname: this.firstname,
-            //   lastname: this.lastname,
-            //   email: this.email,
-            //   residence: this.residence,
+              firstname: this.firstname,
+              lastname: this.lastname,
+              email: this.email,
+              residence: this.residence,
               username: this.username,
               password: this.password,
           })
@@ -77,3 +78,17 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .container {
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300&display=swap');
+    font-size: 26px;
+    font-family: 'Lato', sans-serif;
+    align-items: center;
+    display: flex;
+    padding: 1.5rem 3rem;
+    transition: all .3s;
+    text-decoration: none;
+
+  }
+</style>
