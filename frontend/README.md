@@ -1,4 +1,4 @@
-# frontend
+# Frontend
 
 ### Installing Dependencies
 

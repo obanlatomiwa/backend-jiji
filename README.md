@@ -1,8 +1,10 @@
 # Jiji_Clone
-Notebook is a django and vue.js app designed to connect sellers and buyers.
+
+Jiji_Clone is a django and vue.js app designed to connect sellers and buyers.
 
 ## Database structure
-PostgreSQL
+
+SQLITE
 
 ## Role Based Access Control
 
@@ -49,11 +51,11 @@ The API may return these error types when requests fail:
 - 500: Internal Server Error
 
 ### Endpoints
-##### GET  '/api//products'
+##### GET  '/api/products'
     This endpoint fetches all the notes in the database and displays them as json.
 
 
-##### POST '/api//products'
+##### POST '/api/products'
     This endpoint will create a new category in the database based on the json that is in the body of the request.
 
 ##### PATCH  '/products/<int:note_id>'
@@ -64,44 +66,14 @@ The API may return these error types when requests fail:
     This endpoint will delete the note that corresponds to the note ID that is passed into the url.
 
 
-
-## Getting started with local development
-
 ### Basic Requirements
 
-In order to successfully set up the app, you need to have Python3, pip and PostgreSQL (12.1) already installed on your local machine
+In order to successfully set up the app, you need to have Python3, pip and SQLITE already installed on your local machine
 
 
 ### Running the server
 
 To run the server, execute these three lines from within the `/jiji_clone` directory:
 ```bash
-python manage,py runserver
+python manage.py runserver
 ```
-
-### Hosting instructions
-
-The app is prepared to be deployed to Heroku.
-You need to have a Heroku account and Heroku CLI installed on your machine.
-
-Log in to your Heroku account
-```bash
-heroku login
-```
-Create Heroku app
-```
-heroku create app_name
-```
-The output will include a git url. Copy it and add git remote for Heroku to your local repository
-```
-git remote add heroku heroku_git_url
-```
-Add postgresql add-on 
-```
-heroku addons:create heroku-postgresql:hobby-dev --app app_name
-```
-Push the app to Heroku
-```
-git push heroku master
-```
-

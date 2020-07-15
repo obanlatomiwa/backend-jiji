@@ -1,5 +1,5 @@
 
-#Backend
+# Backend
 
 ## Getting Started
 
@@ -30,5 +30,5 @@ From within the `./jiji_clone` directory first ensure you are working using your
 To run the server, execute:
 
 ```bash
-python manage,py runserver
+python manage.py runserver
 ```
