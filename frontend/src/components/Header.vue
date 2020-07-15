@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <b-navbar class="col-md-12" toggleable="lg" type="dark" variant="success" >
+    <b-navbar class="col-md-12 fix" toggleable="lg" type="dark" variant="success" >
     <b-navbar-brand href="#">
       <img src="../assets/jiji.svg" class="d-inline-block align-top" alt="logo">
     </b-navbar-brand>
@@ -97,6 +97,7 @@ export default {
     display: flex;
     justify-content: center;
   }
+
 
 
 </style>

@@ -1,0 +1,1 @@
+web: gunicorn jiji_clone.wsgi --log-file -

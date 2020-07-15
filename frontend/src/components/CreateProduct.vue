@@ -1,32 +1,32 @@
 <template>
   <div class="">
-      <div class="row">
+      <div class="row card">
           <div class="col-md-6">
-              <div class="card">
+              <div class="">
                   <div class="card-body">
                       <form id="form-product-id" @submit:prevent="checkForm">
-                          <p>
+                          <p class="form-group">
                               <label for="name">Name of Product</label>
-                              <input class="ml-2" type="text" name="name" id="name" v-model="name">
+                              <input class="ml-2 form-control" type="text" name="name" id="name" v-model="name">
                           </p>
-                          <p>
+                          <p class="form-group"> 
                               <label for="description">Description</label>
-                              <input class="ml-2" type="textarea" name="description" id="description" v-model="description">
+                              <input class="ml-2 form-control" type="textarea" name="description" id="description" v-model="description">
                           </p>
-                          <p>
+                          <p class="form-group">
                               <label for="image">Image</label>
-                              <input class="ml-2" type="text" name="image" accept="image/*" alt="Upload" width="48" height="48" id="image" v-model="image">
+                              <input class="ml-2 form-control-file" type="file" name="image" accept="image/*" alt="Upload" width="48" height="48" id="image">
                           </p>
-                          <p>
+                          <p class="form-group">
                               <label for="price">Price</label>
-                              <input class="ml-2" type="number" name="price" id="price" v-model="price">
+                              <input class="ml-2 form-control" type="number" name="price" id="price" v-model="price">
                           </p>
-                          <p>
+                          <p class="form-group"> 
                               <label for="location">Location</label>
-                              <input class="ml-2" type="text" name="location" id="location" v-model="location">
+                              <input class="ml-2 form-control" type="text" name="location" id="location" v-model="location">
                           </p>
                           <p>
-                              <input class="ml-2" type="submit" value="Submit" @click="$emit('createdProduct')">
+                              <input class="ml-2 form-control" type="submit" value="Submit" @click="$emit('createdProduct')">
                           </p>
                       </form>
                   </div> 

@@ -8,13 +8,13 @@
               <input class="btn-sm btn-primary mb-3 btn" id="createdNew" type="submit" value="Add Product"> 
             </form> 
             <h5>Products</h5>
-            <ul class ="text-left text-justify">
-              <div v-bind:key="product.id" v-for= "product in products">
+            <b-list-group class ="text-left text-justify">
+            <b-list-group-item v-bind:key="product.id" v-for= "product in products">
               <a href="#" class="btn sm btn-light mt-2 mb-3" v-on:click="productDetail(product)">
                 {{product.description}}
               </a>               
-            </div>
-            </ul>
+            </b-list-group-item>
+            </b-list-group>
         </div> 
         <div class="col-md-1"></div>
         <div class="col-md-7  ">

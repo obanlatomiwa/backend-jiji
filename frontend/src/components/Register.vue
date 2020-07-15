@@ -5,32 +5,32 @@
           <div><h1>Registration</h1></div>
           <div class="form-group">
             <label for="firstname">First Name</label>
-            <input class="ml-4" type="text" name="firstname" id="firstname" v-model="firstname">
+            <input class="ml-4 form-control" type="text" name="firstname" id="firstname" v-model="firstname">
           </div>
 
           <div class="form-group">
             <label for="lastname">Last Name</label>
-            <input class="ml-4" type="text" name="lastname" id="lastname" v-model="lastname">
+            <input class="ml-4 form-control" type="text" name="lastname" id="lastname" v-model="lastname">
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="ml-4" type="email" name="email" id="email" aria-describedby="emailHelp" v-model="email">
+            <input class="ml-4 form-control" type="email" name="email" id="email" aria-describedby="emailHelp" v-model="email">
           </div>
 
           <div class="form-group">
             <label for="residence">State of Residence</label>
-            <input class="ml-4" type="text" name="residence" id="residence" v-model="residence">
+            <input class="ml-4 form-control" type="text" name="residence" id="residence" v-model="residence">
           </div>
 
           <div class="form-group">
             <label for="username">Username</label>
-            <input class="ml-4" type="text" name="username" id="username" v-model="username">
+            <input class="ml-4 form-control" type="text" name="username" id="username" v-model="username">
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input class="ml-4" type="password" name="password" id="password" v-model="password">
+            <input class="ml-4 form-control" type="password" name="password" id="password" v-model="password">
           </div>
 
           <div class="form-group">
