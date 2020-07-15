@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Jiji logo" src="../assets/jij2.png">
-    <ListProducts msg="Welcome to Your Vue.js App"/>
+    <ListProducts msg="Welcome to Jiji"/>
   </div>
 </template>
 

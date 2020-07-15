@@ -26,7 +26,7 @@
                               <input class="ml-2" type="text" name="location" id="location" v-model="location">
                           </p>
                           <p>
-                              <input class="ml-2" type="submit" value="Submit">
+                              <input class="ml-2" type="submit" value="Submit" @click="$emit('createdProduct')">
                           </p>
                       </form>
                   </div> 

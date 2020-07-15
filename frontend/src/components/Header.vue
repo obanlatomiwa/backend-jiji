@@ -17,6 +17,14 @@
             <b-form-input id="password" size="sm" class="mr-sm-2" placeholder="Password" name="password" v-model="password" type="password"></b-form-input>
             <b-button size="sm" class="my-2 my-sm-0" type="submit">Login</b-button>
         </b-nav-form>
+
+        <b-nav-form @submit.prevent="logout" v-if="token !== null">
+            <b-button size="sm" class="my-2 ml-2 my-sm-0" type="submit">Logout</b-button>
+        </b-nav-form>
+
+        <b-nav-form @submit.prevent="register">
+            <b-button size="sm" class="my-2 ml-2 my-sm-0" type="submit">Register</b-button>
+        </b-nav-form>       
  
       </b-navbar-nav>
     </b-collapse>
@@ -53,6 +61,11 @@ export default {
           .catch(err => {
               localStorage.removeItem('user-token')
           })    
+      }, 
+
+      logout(){
+        localStorage.removeItem('user-token')
+        this.token = null
       }
   }
 }

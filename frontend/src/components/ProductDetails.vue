@@ -9,10 +9,10 @@
             <p>Location: {{productdetailitem.location}}</p>
         </div>
       </div>
-      <button class="btn-sm btn-danger mt-2 mb-3" v-on:click="productDelete(productdetailitem)" @click="$emit('deleted', productdetail)">Delete Product</button>
+      <button class="btn-sm btn-danger mt-2 mb-3" v-on:click="productDelete(productdetailitem)" @click="$emit('deleted', productdetailitem)">Delete Product</button>
   </div>
 </template>
-
+ 
 <script>
 // @ is an alias to /src
 import axios from "axios";
@@ -21,7 +21,7 @@ export default {
   name: 'ProductDetails',
   components: {
     
-  },
+  }, 
   props: {
       productdetailitem: {}
   },

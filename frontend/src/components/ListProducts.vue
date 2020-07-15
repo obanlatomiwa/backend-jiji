@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="col-md-12 mb-5" v-if="createNew"> 
-      <CreateProduct/>
+      <CreateProduct v-on:createdProduct="updateProduct"/>
     </div> 
     <div class="row">
         <div class="col-md-5 text-center product-view">
@@ -17,7 +17,7 @@
               </button>
               <br> 
             </p>
-        </div>
+        </div> 
 
         <div class="col-md-6">
           <ProductDetails v-bind:productdetailitem="productDetailItem" v-on:deleted="updateProduct"/>
@@ -61,11 +61,11 @@ export default {
       this.createNew = !this.createNew;
     },
     updateProduct(){
-      this.setTimeout(() => {
+      this.timer = setTimeout(() => {
         axios.get('http://127.0.0.1:8000/api/products/')
         .then(res => (this.products = res.data))
         .catch(err => console.log(err))
-      }, 500)
+      }, 500);
     }
   },
   created(){
