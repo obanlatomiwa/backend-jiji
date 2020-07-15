@@ -23,7 +23,7 @@
         </b-nav-form>
 
         <b-nav-form @submit.prevent="register">
-            <b-button size="sm" class="my-2 ml-2 my-sm-0" type="submit">Register</b-button>
+            <b-button :to="{name: 'register'}" size="sm" class="my-2 ml-2 my-sm-0" type="submit">Register</b-button>
         </b-nav-form>       
  
       </b-navbar-nav>
@@ -66,6 +66,9 @@ export default {
       logout(){
         localStorage.removeItem('user-token')
         this.token = null
+      },
+      register(){
+        console.log('Router')
       }
   }
 }
