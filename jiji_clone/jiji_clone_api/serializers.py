@@ -28,9 +28,8 @@ class UsersSerializer(serializers.ModelSerializer):
         extra_kwargs = {'user': {'required': True, 'write_only': True}}
 
     def create(self, validated_data):
-        user = Users.objects.create_user(**validated_data)
-        Token.objects.create(user=user)
-        return user
+        users = Users.objects.create_user(**validated_data)
+        return users
 
 class BuyerSerializer(serializers.ModelSerializer):
     class Meta:

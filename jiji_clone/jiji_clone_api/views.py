@@ -6,7 +6,17 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action 
 from django.contrib.auth.models import User
 from .models import Product, Users
-from .serializers import ProductSerializer, UserSerializer, BuyerSerializer
+from .serializers import ProductSerializer, UserSerializer, BuyerSerializer, UsersSerializer
+
+
+# for post permissions 
+class PostPermission(BasePermission):
+    message = 'Buyers'
+    def has_permission(self, request, view):
+        if request.method == 'POST':
+            return True
+        return False
+
 
 # Create your views here.
 class ProductViewSet(viewsets.ModelViewSet):
@@ -21,45 +31,58 @@ class ProductViewSet(viewsets.ModelViewSet):
         response = {'message': 'Not Allowed'}
         return Response(response, status = status.HTTP_400_BAD_REQUEST)
 
-class PostPermission(BasePermission):
-    message = 'Buyers'
-    def has_permission(self, request, view):
-        if request.method == 'POST':
-            return True
-        return False
+
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (PostPermission,)
-    authentication_classes = (IsAdminUser)
-
-    # action 
-    @action(methods=['POST'], detail=True)
-    def delete(self, *args, **kwargs):
-        response = {'message': 'Not Allowed'}
-        return Response(response, status = status.HTTP_400_BAD_REQUEST)
+    authentication_classes = (TokenAuthentication,)
 
 
 class UsersViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all()
     serializer_class = UserSerializer
     permission_classes = (PostPermission,)
-    authentication_classes = (IsAdminUser)
+    # authentication_classes = (TokenAuthentication)
 
     # action 
-    @action(methods=['POST'], detail=True)
-    def create(self, *args, **kwargs):
-        response = {'message': 'Not Allowed'}
-        return Response(response, status = status.HTTP_400_BAD_REQUEST)
+    def create(self, request=None):
+        if  ('first_name' in request.data) and ('last_name' in request.data) and ('location' in request.data) and('username' in request.data) and ('password' in request.data):
+            first_name = request.data['first_name']
+            last_name = request.data['last_name']
+            location = request.data['location']
+            username = request.data['username']
+            password = request.data['password']
+
+
+            try:
+                user = User.objects.create_user(username, 
+                                            first_name = first_name,
+                                            last_name = last_name,
+                                            email=username, 
+                                            password=password
+    )
+                serializer_user = UserSerializer(user, many=False)
+                users = Users.objects.create(user=user, location=location)
+                serializer_users = UsersSerializer(users, many=False)
+                response = {'message': 'user created', 'result': serializer_user.data, 'location': serializer_users.data}
+                return Response(response, status = status.HTTP_200_OK)
+            except:
+                response = {'message': 'User exist'}
+                return Response(response, status = status.HTTP_400_BAD_REQUEST)
+        else:
+            response = {'message': 'Required'}
+            return Response(response, status = status.HTTP_400_BAD_REQUEST)
+            
 # custom permission for buyers, post only
 
 
 class BuyerViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all()
     serializer_class = BuyerSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
-    authentication_classes = (PostPermission)
+    permission_classes = (PostPermission,)
+    # authentication_classes = (TokenAuthentication)
 
     # action 
     def delete(self, *args, **kwargs):
