@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pg9vz&o7xu8+(fua^$=cugr__r_)=fj(#@&&8ayabps1y*sgx0'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = False
+SECRET_KEY = os.environ['SECRET_KEY']
+ALLOWED_HOSTS = ['ttps://jiji-clone.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -150,3 +150,6 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = '/api/products/image/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'image')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

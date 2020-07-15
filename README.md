@@ -23,7 +23,7 @@ SQLITE
 ## API Reference
 
 ### Base URL
-This app is currently hosted at https://wayne-notebook.herokuapp.com/ 
+This app is currently hosted at https://jiji-clone.herokuapp.com/
 
 ## About the Stack
 
