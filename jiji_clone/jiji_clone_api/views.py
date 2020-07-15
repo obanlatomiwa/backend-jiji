@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, BasePermission, IsAdminUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, BasePermission, IsAdminUser, AllowAny
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action 
 from django.contrib.auth.models import User
@@ -21,10 +21,17 @@ class ProductViewSet(viewsets.ModelViewSet):
         response = {'message': 'Not Allowed'}
         return Response(response, status = status.HTTP_400_BAD_REQUEST)
 
+class PostPermission(BasePermission):
+    message = 'Buyers'
+    def has_permission(self, request, view):
+        if request.method == 'POST':
+            return True
+        return False
+
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = Users.objects.all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (PostPermission,)
     authentication_classes = (IsAdminUser)
 
     # action 
@@ -33,13 +40,20 @@ class UserViewSet(viewsets.ModelViewSet):
         response = {'message': 'Not Allowed'}
         return Response(response, status = status.HTTP_400_BAD_REQUEST)
 
+
+class UsersViewSet(viewsets.ModelViewSet):
+    queryset = Users.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (PostPermission,)
+    authentication_classes = (IsAdminUser)
+
+    # action 
+    @action(methods=['POST'], detail=True)
+    def create(self, *args, **kwargs):
+        response = {'message': 'Not Allowed'}
+        return Response(response, status = status.HTTP_400_BAD_REQUEST)
 # custom permission for buyers, post only
-class PostPermission(BasePermission):
-    message = 'Buyers'
-    def has_permission(self, request, view):
-        if request.method == 'POST':
-            return True
-        return False
+
 
 class BuyerViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all()

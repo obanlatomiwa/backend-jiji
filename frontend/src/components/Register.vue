@@ -2,7 +2,7 @@
   <div class="container">
       <form id="form-product" @submit:prevent="createUser">
         <div class="card">
-          <h1>Registration</h1>
+          <div><h1>Registration</h1></div>
           <div class="form-group">
             <label for="firstname">First Name</label>
             <input class="ml-4" type="text" name="firstname" id="firstname" v-model="firstname">

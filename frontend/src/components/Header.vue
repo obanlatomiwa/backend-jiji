@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <b-navbar class="col-md-12" toggleable="lg" type="dark" variant="success">
+    <b-navbar class="col-md-12" toggleable="lg" type="dark" variant="success" >
     <b-navbar-brand href="#">
       <img src="../assets/jiji.svg" class="d-inline-block align-top" alt="logo">
     </b-navbar-brand>
@@ -22,38 +22,49 @@
         </b-nav-form>
 
         <b-nav-form @submit.prevent="logout" v-if="token !== null">
-            <b-button size="sm" class="my-2 ml-2 my-sm-0" type="submit">Logout</b-button>
+            <b-button size="sm" class="my-2 ml-2" type="submit">Logout</b-button>
         </b-nav-form>
 
-        <b-nav-form @submit.prevent="register" v-if="token==null">
+        <b-nav-form @submit.prevent="register" v-if="token === null">
             <b-button :to="{name: 'register'}" size="sm" class="my-2 ml-2 my-sm-0 outline-warning" type="submit">Register</b-button>
         </b-nav-form>       
  
       </b-navbar-nav>
     </b-collapse>
   </b-navbar> 
+
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import axios from 'axios' 
+import { tokenService } from '../storage/service'
 export default {
   name: 'Header',
   components: {
   },
   data(){
       return {
-          username: '',
-          password: '',
-          token: localStorage.getItem('user-token') || null,
+        firstname: '',
+        lastname: '',
+        email: '',
+        residence: '',
+        username: '',
+        password: '',
+        token: localStorage.getItem('user-token') || null,
       }
   },
   methods: {
       login(){
           axios.post('http://127.0.0.1:8000/auth/', {
-             username: this.username,
-             password: this.password
+            firstname: this.firstname,
+            lastname: this.lastname,
+            email: this.email,
+            residence: this.residence,
+            username: this.username,
+            password: this.password
           }
           )
           .then(res => {
@@ -73,13 +84,19 @@ export default {
       register(){
         console.log('Router')
       }
+  }, 
+  created(){
+    this.token = tokenService.getToken() || null
   }
 }
 </script> 
 
 <style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Varta:wght@300;400;500&display=swap');
   .middle{
     display: flex;
     justify-content: center;
   }
+
+
 </style>
