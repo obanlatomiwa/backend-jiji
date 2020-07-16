@@ -1,1 +1,2 @@
-web: gunicorn jiji_clone.wsgi --log-file -
+release: python manage.py migrate
+web: gunicorn jiji_clone.wsgi 
