@@ -25,7 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = os.environ['pg9vz&o7xu8+(fua^$=cugr__r_)=fj(#@&&8ayabps1y*sgx0']
+SECRET_KEY = 'pg9vz&o7xu8+(fua^$=cugr__r_)=fj(#@&&8ayabps1y*sgx0'
 ALLOWED_HOSTS = ['ttps://jiji-clone.herokuapp.com/', 'https://jiji-front.herokuapp.com/', 'localhost']
 
 
@@ -155,6 +156,6 @@ STATICFILES_DIRS = [
 STATIC_URL = '/api/products/image/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'image')
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
