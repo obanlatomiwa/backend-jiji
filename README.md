@@ -59,24 +59,57 @@ The API may return these error types when requests fail:
 - 500: Internal Server Error
 
 ### Endpoints
+
+```
+Note: for any request other than the GET REQUEST, requires Authetication
+
+```
+
 ##### GET  '/api/products'
-    This endpoint fetches all the notes in the database and displays them as json.
+    This endpoint fetches all the products in the database and displays them as json.
 
 
 ##### POST '/api/products'
-    This endpoint will create a new category in the database based on the json that is in the body of the request.
+    This endpoint will create a new product in the database based on the json that is in the body of the request.
 
 ##### PATCH  '/products/<int:note_id>'
-    This endpoint will modify the note that corresponds to the note ID that is passed into the url based on the json that is passed into the body of the request.
+    This endpoint will modify the product that corresponds to the note ID that is passed into the url based on the json that is passed into the body of the request.
 
 
 ##### DELETE  '/api/products/int:<note_id>'
-    This endpoint will delete the note that corresponds to the note ID that is passed into the url.
+    This endpoint will delete the product that corresponds to the note ID that is passed into the url.
 
+##### GET  '/api/buyers'
+    This endpoint fetches all the buyers in the database and displays them as json.
+
+
+##### POST '/api/buyers'
+    This endpoint will create a new buyer resquest in the database based on the json that is in the body of the request.
+
+##### PATCH  '/buyers/<int:note_id>'
+    This endpoint will modify the product that corresponds to the note ID that is passed into the url based on the json that is passed into the body of the request.
+
+
+##### DELETE  '/api/buyers/int:<note_id>'
+    This endpoint will delete the buyer that corresponds to the note ID that is passed into the url.
+
+##### GET  '/api/users'
+    This endpoint fetches all the users in the database and displays them as json.
+
+
+##### POST '/api/users'
+    This endpoint will create a new user in the database based on the json that is in the body of the request.
+
+##### PATCH  '/users/<int:note_id>'
+    This endpoint will modify the user that corresponds to the note ID that is passed into the url based on the json that is passed into the body of the request.
+
+
+##### DELETE  '/api/users/int:<note_id>'
+    This endpoint will delete the user that corresponds to the note ID that is passed into the url.
 
 ## Running the server
 
-From within the `./jiji_clone` directory first ensure you are working using your created virtual environment.
+From within the `./backend-jiji` directory first ensure you are working using your created virtual environment.
 
 To run the server, execute:
 
