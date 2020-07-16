@@ -24,10 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # SECRET_KEY = os.environ['pg9vz&o7xu8+(fua^$=cugr__r_)=fj(#@&&8ayabps1y*sgx0']
 SECRET_KEY = 'pg9vz&o7xu8+(fua^$=cugr__r_)=fj(#@&&8ayabps1y*sgx0'
-ALLOWED_HOSTS = ['ttps://jiji-clone.herokuapp.com/', 'https://jiji-front.herokuapp.com/', 'localhost']
+
+ALLOWED_HOSTS = ['https://jiji-clone.herokuapp.com/', 'https://jiji-front.herokuapp.com/', 'localhost', '127.0.0.1']
 
 
 # Application definition
