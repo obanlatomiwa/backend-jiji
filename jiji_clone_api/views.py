@@ -52,7 +52,7 @@ class UsersViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all()
     serializer_class = UserSerializer
     permission_classes = (PostPermission,)
-    # authentication_classes = (TokenAuthentication)
+    authentication_classes = (TokenAuthentication)
 
     # action 
     def create(self, request=None):
@@ -90,7 +90,7 @@ class BuyerViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all()
     serializer_class = BuyerSerializer
     permission_classes = (PostPermission,)
-    # authentication_classes = (TokenAuthentication)
+    authentication_classes = (TokenAuthentication)
 
     # action 
     def delete(self, *args, **kwargs):

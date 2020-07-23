@@ -35,9 +35,10 @@ DEBUG = True
 # SECRET_KEY = os.environ['pg9vz&o7xu8+(fua^$=cugr__r_)=fj(#@&&8ayabps1y*sgx0']
 SECRET_KEY = 'pg9vz&o7xu8+(fua^$=cugr__r_)=fj(#@&&8ayabps1y*sgx0'
 
-ALLOWED_HOSTS = ['https://jiji-clone.herokuapp.com/',
-                 'https://jiji-front.herokuapp.com/', 'localhost']
+# ALLOWED_HOSTS = ['https://jiji-clone.herokuapp.com/',
+#                  'https://jiji-front.herokuapp.com/', 'localhost']
 
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
