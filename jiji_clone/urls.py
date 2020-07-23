@@ -19,11 +19,12 @@ from django.conf.urls import include
 from rest_framework.authtoken.views import obtain_auth_token
 from django.conf import settings
 from django.conf.urls.static import static
+from jiji_clone_api.views import CustomizeToken
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('jiji_clone_api.urls')),
-    path('auth/', obtain_auth_token),
+    path('auth/', CustomizeToken.as_view()),
 
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 

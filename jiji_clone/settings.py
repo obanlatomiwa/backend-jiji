@@ -28,7 +28,7 @@ DEBUG = True
 # SECRET_KEY = os.environ['pg9vz&o7xu8+(fua^$=cugr__r_)=fj(#@&&8ayabps1y*sgx0']
 SECRET_KEY = 'pg9vz&o7xu8+(fua^$=cugr__r_)=fj(#@&&8ayabps1y*sgx0'
 
-ALLOWED_HOSTS = ['https://jiji-clone.herokuapp.com/', 'https://jiji-front.herokuapp.com/', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://jiji-clone.herokuapp.com/', 'https://jiji-front.herokuapp.com/', 'localhost']
 
 
 # Application definition
@@ -84,7 +84,9 @@ WSGI_APPLICATION = 'jiji_clone.wsgi.application'
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8080'
+    'http://localhost:8080',
+    'https://jiji-front.herokuapp.com'
+
 ]
 
 

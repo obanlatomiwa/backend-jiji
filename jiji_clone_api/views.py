@@ -2,6 +2,8 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, BasePermission, IsAdminUser, AllowAny
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action 
 from django.contrib.auth.models import User
@@ -11,12 +13,18 @@ from .serializers import ProductSerializer, UserSerializer, BuyerSerializer, Use
 
 # for post permissions 
 class PostPermission(BasePermission):
-    message = 'Buyers'
+    message = 'Buyers' 
     def has_permission(self, request, view):
         if request.method == 'POST':
             return True
         return False
 
+# Custom token class
+class CustomizeToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super(CustomizeToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        return Response({'token': token.key, 'id': token.user_id})
 
 # Create your views here.
 class ProductViewSet(viewsets.ModelViewSet):
