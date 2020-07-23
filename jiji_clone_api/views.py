@@ -56,19 +56,20 @@ class UsersViewSet(viewsets.ModelViewSet):
 
     # action 
     def create(self, request=None):
-        if  ('first_name' in request.data) and ('last_name' in request.data) and ('location' in request.data) and('username' in request.data) and ('password' in request.data):
+        if  ('first_name' in request.data) and ('last_name' in request.data) and ('location' in request.data) and('username' in request.data) and ('password' in request.data) and ('email' in request.data):
             first_name = request.data['first_name']
             last_name = request.data['last_name']
             location = request.data['location']
             username = request.data['username']
             password = request.data['password']
+            email = request.data['email']
 
 
             try:
-                user = User.objects.create_user(username, 
+                user = User.objects.create_user(username = username, 
                                             first_name = first_name,
                                             last_name = last_name,
-                                            email=username, 
+                                            email=email, 
                                             password=password
     )
                 serializer_user = UserSerializer(user, many=False)
