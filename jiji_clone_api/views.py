@@ -30,9 +30,8 @@ class CustomizeToken(ObtainAuthToken):
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
-    permission_classes = (AllowAny,)
-    # authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    authentication_classes = (TokenAuthentication,)
 
     # action 
     @action(methods=['POST'], detail=True)
