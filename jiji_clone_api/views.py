@@ -31,7 +31,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
-    authentication_classes = (TokenAuthentication,)
+    # authentication_classes = (TokenAuthentication,)
 
     # action 
     @action(methods=['POST'], detail=True)

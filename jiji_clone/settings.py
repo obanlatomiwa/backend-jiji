@@ -156,13 +156,13 @@ USE_TZ = True
 
 # STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'image')
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'image')
+# ]
 
-STATIC_URL = '/api/products/image/'
+# STATIC_URL = '/api/products/image/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'image')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'image')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
