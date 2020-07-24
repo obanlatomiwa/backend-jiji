@@ -21,10 +21,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from jiji_clone_api.views import CustomizeToken
 
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('api/', include('jiji_clone_api.urls')),
+#     path('auth/', CustomizeToken.as_view()),
+
+# ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('jiji_clone_api.urls')),
     path('auth/', CustomizeToken.as_view()),
 
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

@@ -163,7 +163,12 @@ STATICFILES_DIRS = [
 STATIC_URL = '/api/products/image/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'image')
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = '/api/products/image/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'image')
 
 django_heroku.settings(locals())
 
